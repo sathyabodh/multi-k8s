@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: sathyabodh-tk-tls
+spec:
+  secretName: sathyabodh-tk
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: sathyabodh.tk
+  dnsNames:
+    - sathyabodh.tk
+    - www.sathyabodh.tk
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - sathyabodh.tk
+          - www.sathyabodh.tk
